@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML Starter</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="app2.js"></script>
+
+<script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+<script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+<script src="/lib/bootstrap.js"></script>
+<script src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+</head>
+
+<body background="hcl.jpg" style="position:absolute;z-index:0;left:0;top:0;width:100%;height:100%">
+	                                                   <!-- start navbar-->
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">HCL TECHNOLOGIES</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="first.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+                                                      <!-- this is the end of navbar-->
+<div ng-app = "myApp" class = "container" style="width:400px">
+
+ <div style="text-align:center;color:black">
+<h3><b>Login Form</b></h3>
+ </div>
+
+<div ng-controller = "loginController">
+
+
+        <form class="well" name="myForm" novalidate >
+
+ <div class = "form-group">
+<label> Login email Address:  </label>
+<input type = "email" class = "form-control" placeholder = "Enter Email " name="login_email" ng-model = "login_email" required>
+
+		<span style="color:red" ng-show="myForm.login_email.$dirty && myForm.login_email.$invalid">
+
+            <span ng-show="myForm.login_email.$error.required">Email is required</span>
+        </span>
+ </div>
+
+<div class = "form-group">
+<label> Password:  </label>
+<input type = "password" class = "form-control" placeholder = "Enter Password " name="login_password" ng-model = "login_password" required> 
+			<span style="color:red" ng-show="myForm.login_password.$dirty && myForm.login_password.$invalid">
+
+            <span ng-show="myForm.login_password.$error.required">Password is required</span>
+        </span>
+</div>
+
+<br>
+
+<input type="button" class="btn btn-primary" ng-click="verify_credentials()" value = "Submit" ng-disabled="				                                                                                      myForm.login_password.$invalid|| myForm.login_email.$invalid">
+      </form>
+
+
+
+
+</div>
+</body>
+</html>

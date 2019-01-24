@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML Starter</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+<script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+
+										<!-- connection to controller -->               <script src="app.js"></script>
+
+</head>
+
+<body background="hcl.jpg" style="position:absolute;z-index:0;left:0;top:0;width:100%;height:100%">
+	                                                   <!-- start navbar-->
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div   class="navbar-header">
+      <a class="navbar-brand" href="first.html">HCL TECHNOLOGIES</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="first.html">Home</a></li>
+      <li  class="active" ><a href="#">Career </a></li>
+       <!-- <ul class="dropdown-menu">
+          <li><a href="#">Machine learning</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Data Scientist</a></li>
+        </ul>-->
+      
+      <li class="active"><a href="#">Growth</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li  class="active"><a href="first.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li  class="active"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+                                                      <!-- this is the end of navbar-->
+<div ng-app = "myApp" class = "container" style="width:400px">
+
+ <div style="text-align:center;color:black">
+<h3><b>Sign up form</b></h3>
+ </div>
+
+<div ng-controller = "ContactController">
+
+ <!--<div align="right">
+<a href="#" ng-click="searchUser()">{{title}}</a>
+ </div>-->
+
+        <form role = "form" class="well" name="myForm" ng-submit="myForm.$valid && saveContact(newcontact)" novalidate>
+
+ <div class = "form-group">
+<label> Name:  </label>
+<input type = "text" class = "form-control" placeholder = "Enter Name " name="name" ng-model = "newcontact.name" ng-required="true">
+
+		<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid ">
+
+            <span ng-show="myForm.name.$error.required">Username is required</span>
+
+        </span>
+ </div>
+
+ <div class = "form-group">
+<label> Email:  </label>
+<input type = "email"  class = "form-control" placeholder = "Enter Email " name="email"ng-model = "newcontact.email" required>
+
+		<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid ">
+
+            <span ng-show="myForm.email.$error.required">Email is required</span>
+
+        </span>
+ </div>
+
+<div class = "form-group">
+<label> Password:  </label>
+<input type = "password" class = "form-control" placeholder = "Enter Password " name="password" ng-model = "newcontact.password" required>
+
+		<span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid ">
+
+            <span ng-show="myForm.password.$error.required ">Password is required</span>
+
+        </span>
+</div>
+
+<div class = "form-group">
+<label> Phone:  </label>
+<input type = "number"  class = "form-control" placeholder = "Enter Phone " name="phone" ng-model = "newcontact.phone" required >
+
+		<span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid   ">
+
+            <span ng-show="myForm.phone.$error.required">Phone number is required</span>
+
+        </span>
+</div>
+
+<br>
+<!--<input type="hidden" ng-model="newcontact.id">-->
+<input type="submit" class="btn btn-primary"    value = "Submit" >
+      </form>
+
+
+{{ master | json}}
+{{ newcontact | json}}
+<div><h4><b>Registered Users</b></h4>
+<table  class = "table table-striped table-bordered table-hover">
+<thead>
+<tr class = "info">
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat = "contact in information">
+<td>{{ contact.name }}</td>
+<td>{{ contact.email }}</td>
+<td>{{ contact.phone }}</td>
+
+</tr>
+</tbody>
+</table>
+<div ng-hide="contacts.length > 0">No Users Found</div>
+</div>
+
+
+
+</div>
+</div>
+</body>
+</html>
